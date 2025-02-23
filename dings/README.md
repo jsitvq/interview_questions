@@ -20,7 +20,7 @@
 2. json API  
 
 把查询语句转化成JSON API；不同系统之间接口对接案例；  
-（jason 脚本用postman提交）  
+（json 脚本用postman提交）  
 
 ```
  select distinct      
@@ -50,4 +50,10 @@
  where 1=1  
                             and convert(nvarchar(30), t0.belnr_id) + '-' + convert(nvarchar(30), t1.belpos_id) = '49710-10'  
 ```
+
+3. 跨不同数据源读写数据
+
+不同系统不同的数据源读取，比如postgresql、mysql、sqlserver,  
+   仓储系统数据源是postgresql，ERP数据源是sqlserver；  
+   如果仓储系统、ERP系统的库存进行差异比较，如何操作？  
 
