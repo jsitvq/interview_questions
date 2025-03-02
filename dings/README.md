@@ -17,6 +17,9 @@
 
 此表是一张接口日志表，当传递错误时CSTATE=’-1’,点重新发送会新生成一行数据；当新的数据发送成功，需要原数据状态字段增加成功字段；点重发时CSOURCEID是唯一值；写出实现方法；  
 
+备注：  
+这个日志表用的是SQLserver数据库，可以用数据库的触发器功能写下实现方式嘛？当数据表有数据增加时触发；  
+
 2. json API  
 
 把查询语句转化成JSON API；不同系统之间接口对接案例；  
@@ -51,13 +54,23 @@
                             and convert(nvarchar(30), t0.belnr_id) + '-' + convert(nvarchar(30), t1.belpos_id) = '49710-10'  
 ```
 
+Json报文格式如下：  
+{"mo_code":"NORMAL","material_code":null,"warehouse":null,"mo_type":null,"mo_plan_qty":null,"mo_plan_start_date":"2024-11-22 00:00:00","mo_plan_end_date":"2024-11-22 00:00:00","mo_status":"20","sync_status":"SYNC","order_num":null,"sales_order":null,"customer_code":null,"customer_name":"","u_makenum":null,"mo_memo":null,"belnr_id":null,"belpos_id":null,"ZU_BELPOS_ID":null,"ME_VERBRAUCH":"","ME_LAGER":"","ME_UMR":""}  
+按照举例json格式，再补充下  
+
 3. 跨不同数据源读写数据
 
 不同系统不同的数据源读取，比如postgresql、mysql、sqlserver,  
    仓储系统数据源是postgresql，ERP数据源是sqlserver；  
    如果仓储系统、ERP系统的库存进行差异比较，如何操作？  
 
+备注：跨数据库读取表数据，如何配置？比如说postgresql、sqlserver之间的安装数据源驱动，配置链接点，来读取数据，只显示差异部分；不能用execl导出数据（数据量太大）；请具体的描述下你要哪种方式实现；  
+
 4. 扩展题
 
 对kettle工具、帆软工具、wms、oa系统了解多少？分几方面大概描述下；  
+
+备注： 可以稍微再详细些，有哪些功能再举例说明下  
+Kettle备注：可以实现增加备份、全量备份等等，  
+wms备注：实现移动扫码办公、采购收料......;稍微扩展的模块功能在具体的讲下；  
 
